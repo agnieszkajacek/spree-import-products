@@ -1,0 +1,2 @@
+class ProductImport < ApplicationRecord
+end

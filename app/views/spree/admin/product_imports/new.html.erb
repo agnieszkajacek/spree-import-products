@@ -1,0 +1,14 @@
+<h2>Import Products from CSV</h2>
+
+<%= form_for([:admin, @product_import], :method => :post, :html => { :multipart => true }) do |f| %>
+   <fieldset>
+   <%= f.field_container :data_file do %>
+      <%= f.file_field :data_file %>
+   <% end %>
+   </fieldset>
+
+   <br />
+   <div data-hook="buttons" class="form-actions">
+      <%= button "Import", 'ok', 'submit', {class: 'btn-success'} %>
+   </div>
+<% end %>
