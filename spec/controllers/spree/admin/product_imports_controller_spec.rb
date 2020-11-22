@@ -60,7 +60,7 @@ describe Spree::Admin::ProductImportsController, type: :controller do
 
         it "redirects to the products page" do
           subject
-          expect(response).to redirect_to(spree.admin_products_path)
+          expect(response).to redirect_to(spree.admin_product_import_details_path)
         end
       end
 
@@ -78,6 +78,22 @@ describe Spree::Admin::ProductImportsController, type: :controller do
             ActiveRecord::RecordInvalid, "Validation failed: Data file must be a CSV file"
           )
         end
+      end
+    end
+
+    describe "GET #import_details" do
+      let(:record) { create(:product_import, data_file: simple_csv) }
+
+      it "assigns @product_imports" do
+        spree_get :import_details
+
+        expect(assigns(:product_imports)).to eq([record])
+      end
+
+      it "renders the import details page" do
+        spree_get :import_details
+
+        expect(response).to render_template("import_details")
       end
     end
   end

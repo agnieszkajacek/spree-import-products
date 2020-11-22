@@ -1,0 +1,32 @@
+
+<% if @product_imports.empty? %>
+  <div class="alert alert-info no-objects-found">No Product Imports found.</div>
+<% else %>
+  <table>
+    <thead>
+      <th>File name</th>
+      <th>Created at</th>
+      <th>Imported by</th>
+      <th>Status</th>
+      <th>Errors</th>
+    </thead>
+    <tbody>
+      <% @product_imports.each do |import| %>
+        <tr>
+          <td><%= import.file_name %></td>
+          <td><%= import.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+          <td><%= import.user.email %></td>
+          <td><%= import.status %></td>
+          <td><%= import.import_errors %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<style>
+  table, th, td {
+    border: 1px solid black;
+    padding: 8px;
+  }
+</style>

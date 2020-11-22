@@ -18,7 +18,11 @@ module Spree
 
         CreateProductsFromCsvJob.perform_later(@product_import)
 
-        redirect_to admin_products_path
+        redirect_to admin_product_import_details_path
+      end
+
+      def import_details
+        @product_imports = Spree::ProductImport.all.order("created_at DESC")
       end
 
       private

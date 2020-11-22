@@ -3,6 +3,7 @@ module Spree
   class ProductImport < ActiveRecord::Base
     has_one_attached :data_file
     belongs_to :user, class_name: Spree.user_class.to_s
+    enum status: %i[pending success failed]
 
     validate :correct_mine_type
 
