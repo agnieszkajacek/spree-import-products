@@ -6,7 +6,8 @@ class CreateProductsFromCsvJob < ApplicationJob
 
     Imports::ImportProductsFromCsvUseCase.call(
       params: {
-        file: product_import.data_file
+        file: product_import.data_file,
+        product_import_id: product_import.id
       }
     )
   end

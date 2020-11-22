@@ -14,7 +14,8 @@ describe CreateProductsFromCsvJob, type: :job do
       it "runs use case to import products from csv file" do
         expect(Imports::ImportProductsFromCsvUseCase).to receive(:call).with(
           params: {
-            file: product_import.data_file
+            file: product_import.data_file,
+            product_import_id: product_import.id
           }
         )
         subject
