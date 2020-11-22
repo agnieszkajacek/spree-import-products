@@ -3,7 +3,7 @@
 <%= form_for([:admin, @product_import], :method => :post, :html => { :multipart => true }) do |f| %>
    <fieldset>
    <%= f.field_container :data_file do %>
-      <%= f.file_field :data_file %>
+      <%= f.file_field :data_file, accept: 'text/csv' %>
    <% end %>
    </fieldset>
 
