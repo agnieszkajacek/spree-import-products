@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Imports
-  class ImportProductsFromCsv < UseCase
+  class ImportProductsFromCsvUseCase < UseCase
     require 'csv'
 
     arguments :file
