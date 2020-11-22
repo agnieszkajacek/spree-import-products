@@ -14,7 +14,7 @@ module Spree
         @product_import = ProductImport.new(product_import_params)
         @product_import.file_name = product_import_params[:data_file].original_filename
         @product_import.user_id = spree_current_user.id
-        @product_import.save
+        @product_import.save!
 
         CreateProductsFromCsvJob.perform_later(@product_import)
 
