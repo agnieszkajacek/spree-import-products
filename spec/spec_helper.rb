@@ -25,9 +25,6 @@ require 'spree/testing_support/controller_requests'
 require 'spree/testing_support/factories'
 require 'spree/testing_support/url_helpers'
 
-# Requires factories defined in lib/spree_braintree_vzero/factories.rb
-require 'spree_import_products/factories'
-
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
