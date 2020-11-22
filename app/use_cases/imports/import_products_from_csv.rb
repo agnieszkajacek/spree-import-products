@@ -13,7 +13,6 @@ module Imports
     private
 
     def import_csv
-      parsed_csv
       records = []
 
       begin
@@ -35,16 +34,16 @@ module Imports
     end
 
     def create_product(row, shipping_category)
-      record = Spree::Product.new(
+      product = Spree::Product.create!(
         name: row["name"],
         slug: row["slug"],
+        description: row["description"],
         shipping_category_id: shipping_category.id,
         available_on: row["availability_date"],
+        price: row["price"]
       )
 
-      record.price = row["price"]
-      record.save
-
+      product.master.stock_items.first.update_attributes!(count_on_hand: row["stock_total"])
     end
 
     def find_or_create_shipping_category(category_name)
