@@ -7,7 +7,6 @@ describe CreateProductsFromCsvJob, type: :job do
     fixture_file_upload("files/spree-products-example.csv", "text/csv")
   end
 
-
   describe "#perform_later" do
     context "when valid params" do
       let(:product_import) { create(:product_import, data_file: simple_csv) }
